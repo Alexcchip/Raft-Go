@@ -1,4 +1,6 @@
-Project 3
+# Raft-Go
+
+**Just a few words on the project**
 
 This project can be broken down into a few sections/parts. 
 
@@ -15,8 +17,6 @@ Below that I have defined all of the structs/"types" that I will need such as a 
 These two functions are entry points to the main sections. Using Go channels and select statements I was able to create a lifecycle loop that waits for timeouts and new messages. Messages are handled according to their type as well as the state of the replica
 
 4. The last main part is the main function. Being the entrypoint into the program, this function grabs args, defines the socket, as well as the initial replica with its first attributes. After these definitions are created I call the logic flow, message listener, and the heartBeatSending in seperate go routines to prevent blocking and take advantage of Go's concurrency.
-
--------------------------------- ADDITIONS
 
 5. I would also like to talk about my canCommit() function. This function is used once information about last known commits of followers is known. The leader loops through from last applied to the last tracked commit and applies it to it's local state machine and sends an ack back to the original sender.
 
